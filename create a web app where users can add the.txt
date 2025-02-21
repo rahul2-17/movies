@@ -1,0 +1,23 @@
+create a web app where users can add their favourite moies to a list, store and manage data using an array
+
+input field for entering a movie name
+add movie button
+a list to display added movies
+
+
+style.css
+
+center the content on the page 
+style the input field the button
+add hover effects for interactive button
+
+javascript
+
+create an array to store movie names
+use an event listener to add a moviue to the array when the button is clicked
+update the display list dynamically
+prevent adding empty inputs
+allow users to remove a movie when they click on it
+add a clear list button to empty the array
+display the movie names and the total no.of movies added
+
