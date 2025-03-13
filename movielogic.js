@@ -1,29 +1,41 @@
-let addMovie = document.querySelector("#addMovie");
-let display = document.querySelector("#display");
+document.addEventListener("DOMContentLoaded", () => {
+    const movieInput = document.getElementById("movieInput");
+    const addMovieButton = document.getElementById("addMovie");
+    const clearListButton = document.getElementById("clearList");
+    const movieList = document.getElementById("movieList");
+    const movieCount = document.getElementById("movieCount");
+    
+    let movies = [];
 
-// Load movies from localStorage if available
-let allMovies = JSON.parse(localStorage.getItem("movies")) || [];
-
-function displayMovies() {
-    display.innerHTML = ""; // Clear previous list
-
-    allMovies.forEach((movie, index) => {
-        let movieItem = document.createElement("div");
-        movieItem.textContent = `${index + 1}. ${movie}`;
-        movieItem.style.padding = "10px";
-        movieItem.style.margin = "5px";
-        display.appendChild(movieItem);
-    });
-}
-
-// Show existing movies on page load
-displayMovies();
-
-addMovie.addEventListener("click", () => {
-    let newMovie = prompt("Enter the name of the movie");
-    if (newMovie) {
-        allMovies.push(newMovie);
-        localStorage.setItem("movies", JSON.stringify(allMovies)); // Save to localStorage
-        displayMovies();
+    function updateDisplay() {
+        movieList.innerHTML = "";
+        movies.forEach((movie, index) => {
+            let li = document.createElement("li");
+            li.textContent = `${index + 1}. ${movie}`;
+            li.addEventListener("click", () => removeMovie(index));
+            movieList.appendChild(li);
+        });
+        movieCount.textContent = movies.length;
     }
+
+    function addMovie() {
+        let movieName = movieInput.value.trim();
+        if (movieName === "") return;
+        movies.push(movieName);
+        movieInput.value = "";
+        updateDisplay();
+    }
+
+    function removeMovie(index) {
+        movies.splice(index, 1);
+        updateDisplay();
+    }
+
+    function clearList() {
+        movies = [];
+        updateDisplay();
+    }
+
+    addMovieButton.addEventListener("click", addMovie);
+    clearListButton.addEventListener("click", clearList);
 });
