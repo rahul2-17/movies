@@ -3,12 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Movies</title>
-    <link rel="stylesheet" href="moviestyle.css"/>
+    <title>Movie List App</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <button id="addMovie">+</button>
-    <div id="display"></div>  <!-- Added this to show movie list -->
+    <div class="container">
+        <h1>Favorite Movies</h1>
+        <input type="text" id="movieInput" placeholder="Enter movie name">
+        <button id="addMovie">Add Movie</button>
+        <button id="clearList">Clear List</button>
+        <h2>Total Movies: <span id="movieCount">0</span></h2>
+        <ul id="movieList"></ul>
+    </div>
+    <script src="script.js"></script>
 </body>
-<script src="movielogic.js"></script>
 </html>
